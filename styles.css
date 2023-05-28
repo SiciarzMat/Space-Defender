@@ -1,0 +1,49 @@
+* {
+  font-family: "consolas";
+}
+
+h1 {
+  text-align: center;
+}
+.game-board {
+  width: 600px;
+  height: 600px;
+  border: 1px solid black;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  background: url("./images/BG.png") repeat;
+  animation: moveBg 1s infinite linear;
+}
+@keyframes moveBg {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 -500%;
+  }
+}
+
+.player {
+  width: 80px;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+  background: url(./images/Player.png) no-repeat center / contain;
+}
+
+.bullet {
+  position: absolute;
+  width: 10px;
+  height: 15px;
+  background: url(./images/Bullet.png) no-repeat center / contain;
+}
+
+.enemy {
+  width: 60px;
+  height: 40px;
+  position: absolute;
+  background: url(./images/Enemy.png) no-repeat center / contain;
+}
