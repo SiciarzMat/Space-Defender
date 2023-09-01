@@ -2,6 +2,7 @@ const playerElement = document.querySelector(".player");
 const boardElement = document.querySelector(".game-board");
 const scoreElement = document.querySelector(".score");
 const lifesElement = document.querySelector(".lifes");
+const gameOverElement = document.querySelector(".end-game");
 const bulletArray = [];
 const enemyArray = [];
 let score = 0;
@@ -129,6 +130,16 @@ const createEnemy = () => {
   enemyArray.push(enemy);
 };
 
+let moveEnemiesInterval;
+let createEnemyInterval;
+
+const gameOver = () => {
+  gameOverElement.style.display = "block";
+  clearInterval(moveEnemiesInterval);
+  clearInterval(createEnemyInterval);
+  boardElement.style.animation = "none";
+};
+
 const moveEnemies = () => {
   for (let i = 0; i < enemyArray.length; i++) {
     const enemy = enemyArray[i];
@@ -141,14 +152,14 @@ const moveEnemies = () => {
       enemy.remove();
 
       if (lifes === 0) {
-        alert("Game Over");
+        gameOver();
       }
     }
   }
 };
 
 setInterval(moveBullets, 50);
-setInterval(moveEnemies, 200);
-setInterval(createEnemy, 1000);
+moveEnemiesInterval = setInterval(moveEnemies, 200);
+createEnemyInterval = setInterval(createEnemy, 1000);
 
 showLifes();

@@ -1,9 +1,20 @@
 * {
   font-family: "consolas";
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
   text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+body {
+  background-image: url("./images/BodyBG.png");
+  background-color: black;
+  background-size: cover;
 }
 .game-board {
   width: 600px;
@@ -87,4 +98,17 @@ h1 {
   width: 30px;
   height: 30px;
   background: url("./images/heart.png") no-repeat center / contain;
+}
+
+.end-game {
+  z-index: 4;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 30px 50px;
+  color: #fff;
+  width: 300px;
+  background-color: darkgrey;
+  transform: translate(-50%, -50%);
+  display: none;
 }
