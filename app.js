@@ -48,6 +48,19 @@ const checkHit = (bullet, enemy) => {
   );
 };
 
+const makeExplosion = (left, top) => {
+  const explosion = document.createElement("div");
+  explosion.className = "explosion";
+  explosion.style.left = `${left}px`;
+  explosion.style.top = `${top}px`;
+
+  boardElement.appendChild(explosion);
+
+  setTimeout(() => {
+    explosion.remove();
+  }, 1000);
+};
+
 checkBulletHit = (bullet) => {
   const position = bullet.getBoundingClientRect();
 
@@ -59,6 +72,8 @@ checkBulletHit = (bullet) => {
       const idHit = bulletArray.indexOf(bullet);
       bulletArray.splice(idHit, 1);
       bullet.remove();
+
+      makeExplosion(enemy.offsetLeft, enemy.offsetTop);
 
       enemyArray.splice(i, 1);
       enemy.remove();
