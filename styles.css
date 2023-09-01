@@ -73,3 +73,18 @@ h1 {
 .points span {
   margin-left: -5px;
 }
+
+.lifes {
+  z-index: 3;
+  right: 20px;
+  top: 20px;
+  position: absolute;
+  display: flex;
+  gap: 10px;
+}
+
+.life {
+  width: 30px;
+  height: 30px;
+  background: url("./images/heart.png") no-repeat center / contain;
+}
