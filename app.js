@@ -1,7 +1,9 @@
 const playerElement = document.querySelector(".player");
 const boardElement = document.querySelector(".game-board");
+const scoreElement = document.querySelector(".score");
 const bulletArray = [];
 const enemyArray = [];
+let score = 0;
 
 const movePlayer = (direction) => {
   const newPosition = playerElement.offsetLeft + direction * 10;
@@ -61,6 +63,11 @@ const makeExplosion = (left, top) => {
   }, 1000);
 };
 
+const addScore = (points = 0) => {
+  score += points;
+  scoreElement.innerText = score;
+};
+
 checkBulletHit = (bullet) => {
   const position = bullet.getBoundingClientRect();
 
@@ -69,6 +76,7 @@ checkBulletHit = (bullet) => {
     const enemyPosition = enemy.getBoundingClientRect();
 
     if (checkHit(position, enemyPosition)) {
+      addScore(1);
       const idHit = bulletArray.indexOf(bullet);
       bulletArray.splice(idHit, 1);
       bullet.remove();

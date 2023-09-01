@@ -55,3 +55,21 @@ h1 {
   position: absolute;
   background: url(./images/explosion.png) no-repeat center / contain;
 }
+
+.points {
+  z-index: 3;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  color: rgb(38, 206, 38);
+  height: 10px;
+}
+.points img {
+  width: 25px;
+  vertical-align: middle;
+}
+.points span {
+  margin-left: -5px;
+}
