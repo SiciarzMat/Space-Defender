@@ -1,11 +1,15 @@
-const playerElement = document.querySelector(".player");
-const boardElement = document.querySelector(".game-board");
-const scoreElement = document.querySelector(".score");
-const lifesElement = document.querySelector(".lifes");
-const gameOverElement = document.querySelector(".end-game");
-const restartButton = document.querySelector("#restart");
-const newGameElement = document.querySelector(".start-game");
-const startButton = document.querySelector("#start");
+import elements from "./elements.js";
+const {
+  playerElement,
+  boardElement,
+  scoreElement,
+  lifesElement,
+  gameOverElement,
+  restartButton,
+  newGameElement,
+  startButton,
+} = elements;
+
 const bulletArray = [];
 const enemyArray = [];
 let score = 0;
@@ -102,7 +106,7 @@ const showLifes = () => {
   lifesElement.innerHTML = fillLifes;
 };
 
-checkBulletHit = (bullet) => {
+const checkBulletHit = (bullet) => {
   const position = bullet.getBoundingClientRect();
 
   for (let i = 0; i < enemyArray.length; i++) {

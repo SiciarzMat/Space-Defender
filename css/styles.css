@@ -12,7 +12,7 @@ h1 {
 }
 
 body {
-  background-image: url("./images/BodyBG.png");
+  background-image: url("../images/BodyBG.png");
   background-color: black;
   background-size: cover;
 }
@@ -23,7 +23,7 @@ body {
   margin: 0 auto;
   position: relative;
   overflow: hidden;
-  background: url("./images/BG.png") repeat;
+  background: url("../images/BG.png") repeat;
   /* animation: moveBg 1s infinite linear; */
 }
 @keyframes moveBg {
@@ -42,14 +42,14 @@ body {
   bottom: 0;
   left: 50%;
   transform: translate(-50%);
-  background: url(./images/Player.png) no-repeat center / contain;
+  background: url(../images/Player.png) no-repeat center / contain;
 }
 
 .bullet {
   position: absolute;
   width: 10px;
   height: 15px;
-  background: url(./images/Bullet.png) no-repeat center / contain;
+  background: url(../images/Bullet.png) no-repeat center / contain;
 }
 
 .enemy {
@@ -57,14 +57,14 @@ body {
   width: 60px;
   height: 40px;
   position: absolute;
-  background: url(./images/Enemy.png) no-repeat center / contain;
+  background: url(../images/Enemy.png) no-repeat center / contain;
 }
 
 .explosion {
   width: 60px;
   height: 60px;
   position: absolute;
-  background: url(./images/explosion.png) no-repeat center / contain;
+  background: url(../images/explosion.png) no-repeat center / contain;
 }
 
 .points {
@@ -97,7 +97,7 @@ body {
 .life {
   width: 30px;
   height: 30px;
-  background: url("./images/heart.png") no-repeat center / contain;
+  background: url("../images/heart.png") no-repeat center / contain;
 }
 
 .game {
@@ -108,7 +108,7 @@ body {
   padding: 30px 50px;
   color: #fff;
   width: 100%;
-  background-image: url("./images/BodyBG.png");
+  background-image: url("../images/BodyBG.png");
   background-size: cover;
   background-color: black;
   transform: translate(-50%, -50%);
@@ -124,7 +124,7 @@ body {
 }
 .button {
   color: #fff;
-  background-image: url("./images/BG.png");
+  background-image: url("../images/BG.png");
   background-size: contain;
   background-color: black;
   border: 3px dashed #494975;
