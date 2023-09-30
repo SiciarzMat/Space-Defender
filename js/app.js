@@ -1,4 +1,5 @@
 import elements from "./elements.js";
+import Player from "./player.js";
 const {
   playerElement,
   boardElement,
@@ -12,30 +13,11 @@ const {
 
 const bulletArray = [];
 const enemyArray = [];
-let score = 0;
-let lifes = 3;
 
-const movePlayerX = (direction) => {
-  const newPosition = playerElement.offsetLeft + direction * 10;
-  const { left, right } = boardElement.getBoundingClientRect();
-  const minLeft = playerElement.offsetWidth / 2;
-  const maxRight = right - left - minLeft;
-
-  if (newPosition >= minLeft && newPosition < maxRight) {
-    playerElement.style.left = `${newPosition}px`;
-  }
-};
-
-const movePlayerY = (direction) => {
-  const newPosition = playerElement.offsetTop + direction * 10;
-  const { bottom, top } = boardElement.getBoundingClientRect();
-  const minTop = 0;
-  const maxTop = boardElement.offsetHeight - playerElement.offsetHeight;
-
-  if (newPosition >= minTop && newPosition < maxTop) {
-    playerElement.style.top = `${newPosition}px`;
-  }
-};
+const player = new Player({
+  element: playerElement,
+  boardElement: boardElement,
+});
 
 const createBullet = () => {
   const bullet = document.createElement("div");
@@ -49,19 +31,19 @@ const createBullet = () => {
 const handleKeyboard = (e) => {
   switch (e.code) {
     case "ArrowLeft":
-      movePlayerX(-1);
+      player.moveX(-1);
       break;
 
     case "ArrowRight":
-      movePlayerX(1);
+      player.moveX(1);
       break;
 
     case "ArrowUp":
-      movePlayerY(-1);
+      player.moveY(-1);
       break;
 
     case "ArrowDown":
-      movePlayerY(1);
+      player.moveY(1);
       break;
 
     case "Space":
@@ -93,12 +75,12 @@ const makeExplosion = (left, top) => {
 };
 
 const addScore = (points = 0) => {
-  score += points;
-  scoreElement.innerText = score;
+  player.addScore(points);
+  scoreElement.innerText = player.getScore();
 };
 
 const showLifes = () => {
-  const fillLifes = Array(lifes)
+  const fillLifes = Array(player.getLifes())
     .fill(0)
     .map((n) => `<div class="life"></div>`)
     .join("");
@@ -176,12 +158,12 @@ const moveEnemies = () => {
     enemy.style.top = `${enemy.offsetTop + 5}px`;
 
     if (enemy.offsetTop >= boardElement.offsetHeight) {
-      lifes--;
+      player.setLifes(player.getLifes() - 1);
       showLifes();
       enemyArray.splice(i, 1);
       enemy.remove();
 
-      if (lifes === 0) {
+      if (player.getLifes() === 0) {
         gameOver();
       }
     }
