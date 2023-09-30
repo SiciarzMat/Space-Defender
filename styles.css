@@ -24,7 +24,7 @@ body {
   position: relative;
   overflow: hidden;
   background: url("./images/BG.png") repeat;
-  animation: moveBg 1s infinite linear;
+  /* animation: moveBg 1s infinite linear; */
 }
 @keyframes moveBg {
   from {
@@ -100,7 +100,7 @@ body {
   background: url("./images/heart.png") no-repeat center / contain;
 }
 
-.end-game {
+.game {
   z-index: 4;
   position: absolute;
   top: 50%;
@@ -112,13 +112,16 @@ body {
   background-size: cover;
   background-color: black;
   transform: translate(-50%, -50%);
-  display: none;
+  display: flex;
   flex-direction: column;
   text-align: center;
   border: none;
   align-items: center;
 }
 
+.end-game {
+  display: none;
+}
 .button {
   color: #fff;
   background-image: url("./images/BG.png");

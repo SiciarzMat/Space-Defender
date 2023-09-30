@@ -4,6 +4,8 @@ const scoreElement = document.querySelector(".score");
 const lifesElement = document.querySelector(".lifes");
 const gameOverElement = document.querySelector(".end-game");
 const restartButton = document.querySelector("#restart");
+const newGameElement = document.querySelector(".start-game");
+const startButton = document.querySelector("#start");
 const bulletArray = [];
 const enemyArray = [];
 let score = 0;
@@ -163,10 +165,15 @@ const moveEnemies = () => {
   }
 };
 
-setInterval(moveBullets, 50);
-moveEnemiesInterval = setInterval(moveEnemies, 200);
-createEnemyInterval = setInterval(createEnemy, 1000);
+const startGame = () => {
+  boardElement.style.animation = "moveBg 1s infinite linear";
+  newGameElement.style.display = "none";
+  setInterval(moveBullets, 50);
+  moveEnemiesInterval = setInterval(moveEnemies, 200);
+  createEnemyInterval = setInterval(createEnemy, 1000);
 
-showLifes();
+  showLifes();
+};
 
+startButton.addEventListener("click", startGame);
 restartButton.addEventListener("click", restartGame);
