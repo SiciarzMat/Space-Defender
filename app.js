@@ -3,6 +3,7 @@ const boardElement = document.querySelector(".game-board");
 const scoreElement = document.querySelector(".score");
 const lifesElement = document.querySelector(".lifes");
 const gameOverElement = document.querySelector(".end-game");
+const restartButton = document.querySelector("#restart");
 const bulletArray = [];
 const enemyArray = [];
 let score = 0;
@@ -130,11 +131,15 @@ const createEnemy = () => {
   enemyArray.push(enemy);
 };
 
+const restartGame = () => {
+  window.location.reload();
+};
+
 let moveEnemiesInterval;
 let createEnemyInterval;
 
 const gameOver = () => {
-  gameOverElement.style.display = "block";
+  gameOverElement.style.display = "flex";
   clearInterval(moveEnemiesInterval);
   clearInterval(createEnemyInterval);
   boardElement.style.animation = "none";
@@ -163,3 +168,5 @@ moveEnemiesInterval = setInterval(moveEnemies, 200);
 createEnemyInterval = setInterval(createEnemy, 1000);
 
 showLifes();
+
+restartButton.addEventListener("click", restartGame);

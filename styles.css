@@ -113,6 +113,24 @@ body {
   background-color: black;
   transform: translate(-50%, -50%);
   display: none;
+  flex-direction: column;
   text-align: center;
   border: none;
+  align-items: center;
+}
+
+.button {
+  color: #fff;
+  background-image: url("./images/BG.png");
+  background-size: contain;
+  background-color: black;
+  border: 3px dashed #494975;
+  display: block;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button:hover {
+  border: 3px dashed #a8a8c9;
 }
