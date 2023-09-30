@@ -11,7 +11,7 @@ const enemyArray = [];
 let score = 0;
 let lifes = 3;
 
-const movePlayer = (direction) => {
+const movePlayerX = (direction) => {
   const newPosition = playerElement.offsetLeft + direction * 10;
   const { left, right } = boardElement.getBoundingClientRect();
   const minLeft = playerElement.offsetWidth / 2;
@@ -22,11 +22,22 @@ const movePlayer = (direction) => {
   }
 };
 
+const movePlayerY = (direction) => {
+  const newPosition = playerElement.offsetTop + direction * 10;
+  const { bottom, top } = boardElement.getBoundingClientRect();
+  const minTop = 0;
+  const maxTop = boardElement.offsetHeight - playerElement.offsetHeight;
+
+  if (newPosition >= minTop && newPosition < maxTop) {
+    playerElement.style.top = `${newPosition}px`;
+  }
+};
+
 const createBullet = () => {
   const bullet = document.createElement("div");
   bullet.className = "bullet";
   bullet.style.left = `${playerElement.offsetLeft}px`;
-  bullet.style.bottom = `${playerElement.offsetHeight}px`;
+  bullet.style.top = `${playerElement.offsetTop}px`;
 
   boardElement.appendChild(bullet);
   bulletArray.push(bullet);
@@ -34,11 +45,19 @@ const createBullet = () => {
 const handleKeyboard = (e) => {
   switch (e.code) {
     case "ArrowLeft":
-      movePlayer(-1);
+      movePlayerX(-1);
       break;
 
     case "ArrowRight":
-      movePlayer(1);
+      movePlayerX(1);
+      break;
+
+    case "ArrowUp":
+      movePlayerY(-1);
+      break;
+
+    case "ArrowDown":
+      movePlayerY(1);
       break;
 
     case "Space":
